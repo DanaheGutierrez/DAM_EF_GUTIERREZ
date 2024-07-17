@@ -62,7 +62,7 @@ public class NotaFragment extends Fragment {
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
+            if (mColumnCount <= 2) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new StaggeredGridLayoutManager( mColumnCount, StaggeredGridLayoutManager.VERTICAL));
@@ -81,15 +81,5 @@ public class NotaFragment extends Fragment {
             recyclerView.setAdapter(adapterNotas);
         }
         return view;
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if(context instanceof NotasInteractionListener){
-            mListener = (NotasInteractionListener) context;
-        }else{
-            throw new RuntimeException(context.toString() + "Debe implementarse NotasInteractionListener");
-        }
     }
 }
